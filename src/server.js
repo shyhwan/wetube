@@ -7,6 +7,9 @@ import videoRouter from './routers/videoRouter';
 const PORT = 4000;
 const app = express();
 const logger = morgan('dev');
+
+app.set('view engine', 'pug');
+app.set('views', process.cwd() + '\\src\\views');
 //app.use(gossipmiddleware);  어느 URL에서도 작동하는 미들웨어를 사용할때 사용 java 의 AOP
 app.use(logger);
 
