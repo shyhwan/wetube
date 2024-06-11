@@ -1,5 +1,5 @@
 import express from 'express';
-import { see, edit, deleteVideo, upload } from '../controllers/videoController';
+import { see, getEdit, postEdit, deleteVideo, upload } from '../controllers/videoController';
 
 const videoRouter = express.Router();
 
@@ -7,7 +7,8 @@ const videoRouter = express.Router();
 videoRouter.get('/upload', upload);
 // 정규식으로 작성 가능함.
 videoRouter.get('/:id(\\d+)', see);
-videoRouter.get('/:id(\\d+)/edit', edit);
+videoRouter.get('/:id(\\d+)/edit', getEdit);
+videoRouter.post('/:id(\\d+)/edit', postEdit);
 videoRouter.get('/:id(\\d+)/delete', deleteVideo);
 
 export default videoRouter;

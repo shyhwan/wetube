@@ -54,8 +54,22 @@ const see = (req, res) => {
  * @param {*} res
  * @returns
  */
-const edit = (req, res) => {
-    res.render('edit', { pageTitle: 'Edit' });
+const getEdit = (req, res) => {
+    const { id } = req.params;
+    const video = videos[id - 1];
+    res.render('edit', { pageTitle: `Editing: ${video.title}`, video });
+};
+
+/**
+ * save change Video
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
+const postEdit = (req, res) => {
+    const { id } = req.params;
+    const video = videos[id - 1];
+    res.render('edit', { pageTitle: `Editing: ${video.title}`, video });
 };
 
 /**
@@ -88,4 +102,4 @@ const deleteVideo = (req, res) => {
     res.send('delete Video');
 };
 
-export { trending, see, edit, search, upload, deleteVideo };
+export { trending, see, getEdit, postEdit, search, upload, deleteVideo };
